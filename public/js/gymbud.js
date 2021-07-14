@@ -26,7 +26,7 @@
       const showExerciseSection = () =>
         (document.getElementById("exercise-section").style.display = "block");
 
-      const makeExerciseRequest = async (category) => {
+      const makeExercisesRequest = async (category) => {
         const response = await fetch(
           `https://wger.de/api/v2/exercise/?language=2&category=${
             category.split("-")[0]
@@ -55,7 +55,33 @@
         return;
       }
       showExerciseSection();
-      makeExerciseRequest(e.target.value);
+      makeExercisesRequest(e.target.value);
+    });
+
+    $("#exercise-select").change(async (e) => {
+      const makeExerciseRequest = async (exercise) => {
+        const response = await fetch(
+          `https://wger.de/api/v2/exerciseinfo/${
+            exercise.split("-")[0]
+          }/?format=json&language=2`,
+          {
+            method: "GET",
+            headers: {
+              Accept: "application/json",
+            },
+          }
+        );
+        const json = await response.json();
+        return json;
+      };
+      const { name, id, description, category, muscles } =
+        await makeExerciseRequest(e.target.value);
+      console.log(name, id, description, category, muscles);
+      $.post(ajaxurl, {
+        name,
+        action: "gymbud-exercise-preview",
+        nonce: gymbud.nonce,
+      });
     });
   });
 })(jQuery);

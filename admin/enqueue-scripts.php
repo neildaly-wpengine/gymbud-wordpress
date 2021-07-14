@@ -16,5 +16,13 @@ function gymbud_enqueue_styles() {
 
 function gymbud_enqueue_scripts() {
 	$script_url = plugin_dir_url( dirname( __FILE__ ) ) . 'public/js/gymbud.js';
+	$nonce      = wp_create_nonce( 'gymbud' );
 	wp_enqueue_script( 'gymbud', $script_url, array( 'jquery' ) );
+	wp_localize_script(
+		'gymbud',
+		'gymbud',
+		array(
+			'nonce' => $nonce,
+		)
+	);
 }
