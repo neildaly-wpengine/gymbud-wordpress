@@ -4,7 +4,9 @@
 }
 
 .category-label,
-.exercise-label {
+.exercise-label,
+.post-title-label,
+.post-description-label {
   display: block;
   margin-bottom: 10px;
 }
@@ -16,4 +18,21 @@
 
 .exercise-section {
   display: none;
+}
+
+.post-preview-section {
+  display: none;
+}
+
+#post-title {
+  margin-bottom: 10px;
+}
+
+#exercise-select {
+  margin-bottom: 10px;
+}
+
+#post-description {
+  display: block;
+  margin-bottom: 10px;
 }

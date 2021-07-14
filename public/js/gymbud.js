@@ -1,5 +1,19 @@
 (($) => {
   $(document).ready(() => {
+    const hideExerciseSection = () =>
+      (document.getElementById("exercise-section").style.display = "none");
+    const showExerciseSection = () =>
+      (document.getElementById("exercise-section").style.display = "block");
+    const hidePostPreviewSection = () =>
+      (document.getElementById("post-preview-section").style.display = "none");
+    const showPostPreviewSection = () =>
+      (document.getElementById("post-preview-section").style.display = "block");
+    const getExerciseSelectDropdown = () =>
+      document.getElementById("exercise-select");
+    const resetExerciseSelectDropdown = () =>
+      (getExerciseSelectDropdown().innerHTML =
+        "<option value='none'>Select</option>");
+
     const fetchCategories = async () => {
       const response = await fetch("https://wger.de/api/v2/exercisecategory/", {
         method: "GET",
@@ -21,11 +35,6 @@
     fetchCategories();
 
     $("#category-select").change((e) => {
-      const hideExerciseSection = () =>
-        (document.getElementById("exercise-section").style.display = "none");
-      const showExerciseSection = () =>
-        (document.getElementById("exercise-section").style.display = "block");
-
       const makeExercisesRequest = async (category) => {
         const response = await fetch(
           `https://wger.de/api/v2/exercise/?language=2&category=${
@@ -39,8 +48,7 @@
           }
         );
         const json = await response.json();
-        const dropdown = document.getElementById("exercise-select");
-        dropdown.innerHTML = "<option value='none'>Select</option>";
+        const dropdown = getExerciseSelectDropdown();
 
         json.results.map((result) => {
           const option = document.createElement("option");
@@ -50,15 +58,22 @@
         });
       };
 
+      hidePostPreviewSection();
       if (e.target.value === "none") {
         hideExerciseSection();
         return;
       }
       showExerciseSection();
+      resetExerciseSelectDropdown();
       makeExercisesRequest(e.target.value);
     });
 
     $("#exercise-select").change(async (e) => {
+      if (e.target.value === "none") {
+        hidePostPreviewSection();
+        return;
+      }
+      showPostPreviewSection();
       const makeExerciseRequest = async (exercise) => {
         const response = await fetch(
           `https://wger.de/api/v2/exerciseinfo/${
@@ -76,15 +91,15 @@
       };
       const { name, id, description, category, muscles } =
         await makeExerciseRequest(e.target.value);
-      $.post(ajaxurl, {
-        name,
-        id,
-        description,
-        category,
-        muscles,
-        action: "gymbud-exercise-preview",
-        nonce: gymbud.nonce,
-      });
+      // $.post(ajaxurl, {
+      //   name,
+      //   id,
+      //   description,
+      //   category,
+      //   muscles,
+      //   action: "gymbud-exercise-preview",
+      //   nonce: gymbud.nonce,
+      // });
     });
   });
 })(jQuery);

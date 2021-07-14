@@ -16,6 +16,7 @@ function gymbud_display_settings_page() {
 		<?php render_gymbud_overview(); ?>
 		<?php render_gymbud_category_selection(); ?>
 		<?php render_gymbud_exercise_selection(); ?>
+		<?php render_gymbud_post_preview(); ?>
 	</div>
 	<?php
 }
@@ -33,7 +34,6 @@ function render_gymbud_category_selection() {
 		<select name="category" id="category-select">
 			<option value="none">Select</option>
 		</select>
-		<pre class="gymbud-categories-response"></pre>
 	</div>
 	<?php
 }
@@ -45,7 +45,18 @@ function render_gymbud_exercise_selection() {
 		<select name="exercise" id="exercise-select">
 			<option value="none">Select</option>
 		</select>
-		<pre class="gymbud-categories-response"></pre>
+	</div>
+	<?php
+}
+
+function render_gymbud_post_preview() {
+	?>
+	<div class="post-preview-section" id="post-preview-section">
+		<label for="post-title" class="post-title-label">Post Title</label>
+		<input type="text" id="post-title" name="post-title"/>
+		<label for="post-description" class="post-description-label">Description</label>
+		<textarea id="post-description" name="post-description" rows="4" cols="50"></textarea>
+		<input type="submit" class="post-preview-button" value="Create"/>
 	</div>
 	<?php
 }
