@@ -29,10 +29,10 @@ function render_gymbud_category_selection() {
 	?>
 	<div class="category-section">
 		<label for="category" class="category-label">Category</label>
-		<select name="category" id="category">
-			<option value="chest">Chest</option>
-			<option value="back">Back</option>
+		<select name="category" id="category-select">
+			<option value="none">None</option>
 		</select>
+		<pre class="gymbud-categories-response"></pre>
 	</div>
 	<?php
 }

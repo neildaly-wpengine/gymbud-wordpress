@@ -6,3 +6,7 @@
   display: block;
   margin-bottom: 10px;
 }
+
+#category-select {
+  min-width: 7rem;
+}
