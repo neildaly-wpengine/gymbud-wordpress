@@ -49,14 +49,3 @@ function render_gymbud_exercise_selection() {
 	</div>
 	<?php
 }
-
-function gymbud_exercise_preview()
-{
-    check_ajax_referer('gymbud', 'nonce');
-    if ( ! current_user_can( 'publish_posts' ) ) {
-		return;
-	}
-	echo $_POST['name'];
-    wp_die();
-}
-add_action('wp_ajax_gymbud-exercise-preview', 'gymbud_exercise_preview');

@@ -76,9 +76,12 @@
       };
       const { name, id, description, category, muscles } =
         await makeExerciseRequest(e.target.value);
-      console.log(name, id, description, category, muscles);
       $.post(ajaxurl, {
         name,
+        id,
+        description,
+        category,
+        muscles,
         action: "gymbud-exercise-preview",
         nonce: gymbud.nonce,
       });
