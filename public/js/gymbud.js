@@ -26,11 +26,36 @@
       const showExerciseSection = () =>
         (document.getElementById("exercise-section").style.display = "block");
 
+      const makeExerciseRequest = async (category) => {
+        const response = await fetch(
+          `https://wger.de/api/v2/exercise/?language=2&category=${
+            category.split("-")[0]
+          }&format=json`,
+          {
+            method: "GET",
+            headers: {
+              Accept: "application/json",
+            },
+          }
+        );
+        const json = await response.json();
+        const dropdown = document.getElementById("exercise-select");
+        dropdown.innerHTML = "<option value='none'>Select</option>";
+
+        json.results.map((result) => {
+          const option = document.createElement("option");
+          option.value = `${result.id}-${result.name}`;
+          option.innerHTML = result.name;
+          dropdown.appendChild(option);
+        });
+      };
+
       if (e.target.value === "none") {
         hideExerciseSection();
         return;
       }
       showExerciseSection();
+      makeExerciseRequest(e.target.value);
     });
   });
 })(jQuery);
