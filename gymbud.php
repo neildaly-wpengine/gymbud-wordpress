@@ -19,4 +19,5 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( is_admin() ) {
 	include_once plugin_dir_path( __FILE__ ) . 'admin/admin-menu.php';
 	include_once plugin_dir_path( __FILE__ ) . 'admin/settings-page.php';
+	include_once plugin_dir_path( __FILE__ ) . 'admin/enqueue-scripts.php';
 }

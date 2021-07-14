@@ -13,7 +13,26 @@ function gymbud_display_settings_page() {
 	?>
 	<div class="wrap">
 		<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
-		<p>Some content here..</p>
+		<?php render_gymbud_overview(); ?>
+		<?php render_gymbud_category_selection(); ?>
+	</div>
+	<?php
+}
+
+function render_gymbud_overview() {
+	?>
+	<p style="max-width: 60%;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit sunt dignissimos temporibus vitae nam magnam, adipisci laborum asperiores dolorem in!</p>
+	<?php
+}
+
+function render_gymbud_category_selection() {
+	?>
+	<div class="category-section">
+		<label for="category" class="category-label">Category</label>
+		<select name="category" id="category">
+			<option value="chest">Chest</option>
+			<option value="back">Back</option>
+		</select>
 	</div>
 	<?php
 }
