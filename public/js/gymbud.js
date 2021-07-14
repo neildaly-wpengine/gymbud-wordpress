@@ -21,10 +21,16 @@
     fetchCategories();
 
     $("#category-select").change((e) => {
+      const hideExerciseSection = () =>
+        (document.getElementById("exercise-section").style.display = "none");
+      const showExerciseSection = () =>
+        (document.getElementById("exercise-section").style.display = "block");
+
       if (e.target.value === "none") {
+        hideExerciseSection();
         return;
       }
-      console.log("render exercises for", e.target.value);
+      showExerciseSection();
     });
   });
 })(jQuery);

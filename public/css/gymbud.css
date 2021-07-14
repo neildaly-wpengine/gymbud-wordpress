@@ -1,12 +1,19 @@
-.category-section {
+.category-section,
+.exercise-label {
   margin: 15px 0;
 }
 
-.category-label {
+.category-label,
+.exercise-label {
   display: block;
   margin-bottom: 10px;
 }
 
-#category-select {
+#category-select,
+#exercise-select {
   min-width: 7rem;
+}
+
+.exercise-section {
+  display: none;
 }
