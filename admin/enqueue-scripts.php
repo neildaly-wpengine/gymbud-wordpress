@@ -40,13 +40,13 @@ function gymbud_exercise_preview() {
 	$category    = $_POST['category'];
 	$muscles     = $_POST['muscles'];
 
-	// wp_insert_post(
-	// 	array(
-	// 		'post_content' => $description,
-	// 		'post_title'   => $name,
-	// 		'post_status'  => 'publish',
-	// 	)
-	// );
+	wp_insert_post(
+		array(
+			'post_content' => $description,
+			'post_title'   => $name,
+			'post_status'  => 'publish',
+		)
+	);
 
 	wp_die();
 }

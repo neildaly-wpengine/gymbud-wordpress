@@ -100,6 +100,8 @@
       //   action: "gymbud-exercise-preview",
       //   nonce: gymbud.nonce,
       // });
+      document.getElementById("post-title").value = name;
+      document.getElementById("post-description").value = description;
     });
   });
 })(jQuery);

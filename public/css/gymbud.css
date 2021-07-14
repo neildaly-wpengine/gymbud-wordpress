@@ -12,8 +12,13 @@
 }
 
 #category-select,
-#exercise-select {
+#exercise-select,
+#post-title {
   min-width: 18rem;
+}
+
+#post-description {
+  min-width: 25rem;
 }
 
 .exercise-section {
