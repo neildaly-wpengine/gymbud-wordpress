@@ -24,7 +24,7 @@ function gymbud_display_settings_page() {
 
 function render_gymbud_overview() {
 	?>
-	<p style="max-width: 60%;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit sunt dignissimos temporibus vitae nam magnam, adipisci laborum asperiores dolorem in!</p>
+	<p style="max-width: 60%;">Quickly generate informative posts outlining everything necessary to perform a variety of exercises. Here you can easily generate detailed descriptions, muscle groups, illustrated instructions and involved body parts.</p>
 	<?php
 }
 
