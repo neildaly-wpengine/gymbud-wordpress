@@ -4,7 +4,7 @@
 }
 
 .muscle-group {
-  background: #1a1a1a;
+  background: #bf3b3b;
   color: white;
   padding: 10px 20px;
   border-radius: 20px;
@@ -12,4 +12,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.diagram-container {
+  display: flex;
+  margin-top: 20px;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.muscle-diagram-front,
+.muscle-diagram-back {
+  width: 150px;
+  height: 276px;
+  background-size: 150px;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-top: 20px;
 }

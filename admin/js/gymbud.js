@@ -13,6 +13,39 @@
     const resetExerciseSelectDropdown = () =>
       (getExerciseSelectDropdown().innerHTML =
         "<option value='none'>Select</option>");
+
+    const renderMuscleDiagrams = (muscles) => {
+      const frontImage =
+        "https://wger.de/static/images/muscles/muscular_system_front.svg";
+      const backImage =
+        "https://wger.de/static/images/muscles/muscular_system_back.svg";
+      const frontImages = [];
+      const backImages = [];
+      let markup = "";
+
+      muscles.forEach((muscle) => {
+        const image = `https://wger.de/static/images/muscles/main/muscle-${muscle.id}.svg`;
+        if (muscle.is_front) {
+          frontImages.push(image);
+        } else {
+          backImages.push(image);
+        }
+      });
+
+      if (frontImages.length > 0) {
+        markup += `<div class="muscle-diagram-front" style="background-image: ${frontImages.map(
+          (image) => `url(${image}),`
+        )} url(${frontImage})"></div>`;
+      }
+
+      if (backImages.length > 0) {
+        markup += `<div class="muscle-diagram-back" style="background-image: ${backImages.map(
+          (image) => `url(${image}),`
+        )} url(${backImage})"></div>`;
+      }
+      return markup;
+    };
+
     const generateDescriptionMarkup = (description, { name }, muscles) => {
       const muscleGroups = muscles
         .map((muscle) => `<div class="muscle-group">${muscle.name}</div>`)
@@ -24,8 +57,9 @@
             ${muscleGroups}
           </div>
           <div class="description-exercise-description">
-            ${description}
+          ${description}
           </div>
+          <div class="diagram-container">${renderMuscleDiagrams(muscles)}</div>
         </div>
       `.trim();
     };
@@ -111,6 +145,7 @@
           }
         );
         const json = await response.json();
+
         return json;
       };
 
