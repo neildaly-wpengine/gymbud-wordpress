@@ -13,13 +13,6 @@
     const resetExerciseSelectDropdown = () =>
       (getExerciseSelectDropdown().innerHTML =
         "<option value='none'>Select</option>");
-    const createFrontImageMarkup = (frontImages) => {
-      const mainImage =
-        "https://wger.de/static/images/muscles/muscular_system_front.svg";
-      return `<div class="muscle-diagram-front" style="background-image: ${frontImages.map(
-        (image) => `url(${image}),`
-      )} url(${mainImage})"></div>`;
-    };
     const setLinkToPost = (link) => {
       document.getElementById("view-post-link").href = link;
     };
@@ -28,6 +21,13 @@
     const hideSuccessPanel = () =>
       (document.getElementById("success-section").style.display = "none");
 
+    const createFrontImageMarkup = (frontImages) => {
+      const mainImage =
+        "https://wger.de/static/images/muscles/muscular_system_front.svg";
+      return `<div class="muscle-diagram-front" style="background-image: ${frontImages.map(
+        (image) => `url(${image}),`
+      )} url(${mainImage})"></div>`;
+    };
     const createBackImageMarkup = (backImages) => {
       const mainImage =
         "https://wger.de/static/images/muscles/muscular_system_back.svg";
