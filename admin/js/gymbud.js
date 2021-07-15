@@ -64,7 +64,6 @@
         (image) =>
           (markup += `<img class="exercise-image" src="${image.image}"></img>`)
       );
-      console.log(images, markup);
       return markup;
     };
 
