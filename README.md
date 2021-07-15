@@ -1,6 +1,6 @@
 # gymbud-wordpress
 Quickly generate informative posts by selecting from a list of exercises obtained from https://wger.de/api/v2/ 
 
-![image](https://user-images.githubusercontent.com/66415822/125821507-fc2beb7c-f34b-4c63-bc92-45f9e5b27008.png)
+![image](https://user-images.githubusercontent.com/66415822/125822030-cb5d8be7-bdb2-41a5-9c9d-3bbf2f0be630.png)
 
-![image](https://user-images.githubusercontent.com/66415822/125821559-73eb611d-846f-4f53-9140-74535a541274.png)
+![image](https://user-images.githubusercontent.com/66415822/125822068-4cd95179-2a06-45dc-b457-441a1bd740b6.png)
