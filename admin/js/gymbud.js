@@ -14,7 +14,7 @@
       (getExerciseSelectDropdown().innerHTML =
         "<option value='none'>Select</option>");
     const generateDescriptionMarkup = (description, { name }, muscles) => {
-      const muscleGroups = muscles
+      const muscleGroups = muscles∏
         .map((muscle) => `<div class="muscle-group">${muscle.name}</div>`)
         .join(" ");
       return `
@@ -29,12 +29,13 @@
         </div>
       `.trim();
     };
-    const showSuccessMessage = () =>
-      (document.getElementById("success-message").style.display = "block");
-    const showLinkToPost = (link) => {
-      document.getElementById("view-post-link").style.display = "block";
+    const setLinkToPost = (link) => {
       document.getElementById("view-post-link").href = link;
     };
+    const showSuccessPanel = () =>
+      (document.getElementById("success-section").style.display = "block");
+    const hideSuccessPanel = () =>
+      (document.getElementById("success-section").style.display = "none");
 
     const fetchCategories = async () => {
       const response = await fetch("https://wger.de/api/v2/exercisecategory/", {
@@ -91,6 +92,7 @@
     });
 
     $("#exercise-select").change(async (e) => {
+      hideSuccessPanel();
       if (e.target.value === "none") {
         hidePostPreviewSection();
         return;
@@ -134,8 +136,8 @@
             // todo
             return;
           }
-          showSuccessMessage();
-          showLinkToPost(data.data.link);
+          setLinkToPost(data.data.link);
+          showSuccessPanel();
         }
       );
     });

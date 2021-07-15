@@ -42,11 +42,14 @@
   margin-bottom: 10px;
 }
 
+.success-section {
+  display: none;
+}
 .success-message {
   color: rgb(31, 146, 31);
-  display: none;
+  /* display: none; */
 }
 
 .view-post-link {
-  display: none;
+  /* display: none; */
 }
