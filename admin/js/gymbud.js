@@ -55,7 +55,25 @@
       return result;
     };
 
-    const generateDescriptionMarkup = (description, { name }, muscles) => {
+    const extractImages = (images) => {
+      if (images.length === 0) {
+        return "";
+      }
+      let markup = "";
+      images.forEach(
+        (image) =>
+          (markup += `<img class="exercise-image" src="${image.image}"></img>`)
+      );
+      console.log(images, markup);
+      return markup;
+    };
+
+    const generateDescriptionMarkup = (
+      description,
+      { name },
+      muscles,
+      images
+    ) => {
       const muscleGroups = muscles
         .map((muscle) => `<div class="muscle-group">${muscle.name}</div>`)
         .join(" ");
@@ -65,6 +83,7 @@
           <div class="muscle-groups">
             ${muscleGroups}
           </div>
+          <div class="images">${extractImages(images)}</div>
           <div class="description-exercise-description">
           ${description}
           </div>
@@ -148,15 +167,14 @@
           }
         );
         const json = await response.json();
-
         return json;
       };
 
-      const { name, description, category, muscles } =
+      const { name, description, category, muscles, images } =
         await makeExerciseRequest(e.target.value);
       document.getElementById("post-title").value = name;
       document.getElementById("post-description").value =
-        generateDescriptionMarkup(description, category, muscles);
+        generateDescriptionMarkup(description, category, muscles, images);
     });
 
     $(".post-preview-section").on("submit", (e) => {

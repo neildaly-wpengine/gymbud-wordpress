@@ -30,3 +30,14 @@
   background-position: center;
   margin-top: 20px;
 }
+
+.images {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 20px 0;
+}
+
+.exercise-image {
+  width: 200px;
+}
