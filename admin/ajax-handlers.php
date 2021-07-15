@@ -8,14 +8,20 @@ function gymbud_exercise_submit() {
 	$title       = $_POST['title'];
 	$description = $_POST['description'];
 
-	wp_insert_post(
+	$post_id = wp_insert_post(
 		array(
 			'post_content'  => $description,
 			'post_title'    => $title,
 			'post_status'   => 'publish',
-			'post_category' => array('6'),
+			'post_category' => array( '6' ),
 		)
 	);
+
+	if ( is_wp_error( $post_id ) ) {
+		wp_send_json_error( array( 'result' => '0' ) );
+	} else {
+		wp_send_json_success( array( 'result' => '1' ) );
+	}
 
 	wp_die();
 }

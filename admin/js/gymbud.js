@@ -115,13 +115,18 @@
 
     $(".post-preview-section").on("submit", (e) => {
       e.preventDefault();
-      console.log(e);
-      $.post(ajaxurl, {
-        title: document.getElementById("post-title").value,
-        description: document.getElementById("post-description").value,
-        action: "gymbud-exercise-submit",
-        nonce: gymbud.nonce,
-      });
+      $.post(
+        ajaxurl,
+        {
+          title: document.getElementById("post-title").value,
+          description: document.getElementById("post-description").value,
+          action: "gymbud-exercise-submit",
+          nonce: gymbud.nonce,
+        },
+        (data) => {
+          console.log(data);
+        }
+      );
     });
   });
 })(jQuery);
