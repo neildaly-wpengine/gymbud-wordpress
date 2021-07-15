@@ -13,37 +13,39 @@
     const resetExerciseSelectDropdown = () =>
       (getExerciseSelectDropdown().innerHTML =
         "<option value='none'>Select</option>");
+    const createFrontImageMarkup = (frontImages) => {
+      const mainImage =
+        "https://wger.de/static/images/muscles/muscular_system_front.svg";
+      return `<div class="muscle-diagram-front" style="background-image: ${frontImages.map(
+        (image) => `url(${image}),`
+      )} url(${mainImage})"></div>`;
+    };
+
+    const createBackImageMarkup = (backImages) => {
+      const mainImage =
+        "https://wger.de/static/images/muscles/muscular_system_back.svg";
+      return `<div class="muscle-diagram-back" style="background-image: ${backImages.map(
+        (image) => `url(${image}),`
+      )} url(${mainImage})"></div>`;
+    };
 
     const renderMuscleDiagrams = (muscles) => {
-      const frontImage =
-        "https://wger.de/static/images/muscles/muscular_system_front.svg";
-      const backImage =
-        "https://wger.de/static/images/muscles/muscular_system_back.svg";
       const frontImages = [];
       const backImages = [];
-      let markup = "";
 
       muscles.forEach((muscle) => {
         const image = `https://wger.de/static/images/muscles/main/muscle-${muscle.id}.svg`;
-        if (muscle.is_front) {
-          frontImages.push(image);
-        } else {
-          backImages.push(image);
-        }
+        muscle.is_front ? frontImages.push(image) : backImages.push(image);
       });
 
+      let result = "";
       if (frontImages.length > 0) {
-        markup += `<div class="muscle-diagram-front" style="background-image: ${frontImages.map(
-          (image) => `url(${image}),`
-        )} url(${frontImage})"></div>`;
+        result += createFrontImageMarkup(frontImages);
       }
-
       if (backImages.length > 0) {
-        markup += `<div class="muscle-diagram-back" style="background-image: ${backImages.map(
-          (image) => `url(${image}),`
-        )} url(${backImage})"></div>`;
+        result += createBackImageMarkup(backImages);
       }
-      return markup;
+      return result;
     };
 
     const generateDescriptionMarkup = (description, { name }, muscles) => {
