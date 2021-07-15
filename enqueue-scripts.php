@@ -13,11 +13,11 @@ function load_gymbud_admin_styles( $hook ) {
 add_action( 'admin_enqueue_scripts', 'load_gymbud_admin_styles' );
 
 function gymbud_enqueue_styles() {
-	wp_enqueue_style( 'gymbud', plugin_dir_url( dirname( __FILE__ ) ) . 'public/css/gymbud.css', array(), null, 'screen' );
+	wp_enqueue_style( 'gymbud', plugin_dir_url( __FILE__ ) . 'admin/css/gymbud.css', array(), null, 'screen' );
 }
 
 function gymbud_enqueue_scripts() {
-	$script_url = plugin_dir_url( dirname( __FILE__ ) ) . 'public/js/gymbud.js';
+	$script_url = plugin_dir_url( __FILE__  ) . 'admin/js/gymbud.js';
 	$nonce      = wp_create_nonce( 'gymbud' );
 	wp_enqueue_script( 'gymbud', $script_url, array( 'jquery' ) );
 	wp_localize_script(
@@ -29,25 +29,22 @@ function gymbud_enqueue_scripts() {
 	);
 }
 
-function gymbud_exercise_preview() {
+function gymbud_exercise_submit() {
 	check_ajax_referer( 'gymbud', 'nonce' );
 	if ( ! current_user_can( 'publish_posts' ) ) {
 		return;
 	}
-	$name        = $_POST['name'];
+	$title        = $_POST['title'];
 	$description = $_POST['description'];
-	$id          = $_POST['id'];
-	$category    = $_POST['category'];
-	$muscles     = $_POST['muscles'];
 
 	wp_insert_post(
 		array(
 			'post_content' => $description,
-			'post_title'   => $name,
-			'post_status'  => 'publish',
+			'post_title'   => $title,
+			'post_status'  => 'draft',
 		)
 	);
 
 	wp_die();
 }
-add_action( 'wp_ajax_gymbud-exercise-preview', 'gymbud_exercise_preview' );
+add_action( 'wp_ajax_gymbud-exercise-submit', 'gymbud_exercise_submit' );

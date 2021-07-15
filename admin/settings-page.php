@@ -51,12 +51,12 @@ function render_gymbud_exercise_selection() {
 
 function render_gymbud_post_preview() {
 	?>
-	<div class="post-preview-section" id="post-preview-section">
+	<form class="post-preview-section" id="post-preview-section" method="post">
 		<label for="post-title" class="post-title-label">Post Title</label>
 		<input type="text" id="post-title" name="post-title"/>
 		<label for="post-description" class="post-description-label">Description</label>
-		<textarea id="post-description" name="post-description" rows="4" cols="50"></textarea>
+		<textarea id="post-description" name="post-description" rows="4" cols="80"></textarea>
 		<input type="submit" class="post-preview-button" value="Create"/>
-	</div>
+	</form>
 	<?php
 }

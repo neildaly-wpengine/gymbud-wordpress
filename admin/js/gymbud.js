@@ -13,6 +13,22 @@
     const resetExerciseSelectDropdown = () =>
       (getExerciseSelectDropdown().innerHTML =
         "<option value='none'>Select</option>");
+    const generateDescriptionMarkup = (description, { name }, muscles) => {
+      const muscleGroups = muscles
+        .map((muscle) => `<div class="musle-group">${muscle.name}</div>`)
+        .join(" ");
+      return `
+        <div>
+          <h3 class="description-category">${name}</h3>
+          <div class="muscle-groups">
+            ${muscleGroups}
+          </div>
+          <div class="description-exercise-description">
+            ${description}
+          </div>
+        </div>
+      `.trim();
+    };
 
     const fetchCategories = async () => {
       const response = await fetch("https://wger.de/api/v2/exercisecategory/", {
@@ -89,19 +105,23 @@
         const json = await response.json();
         return json;
       };
-      const { name, id, description, category, muscles } =
+
+      const { name, description, category, muscles } =
         await makeExerciseRequest(e.target.value);
-      // $.post(ajaxurl, {
-      //   name,
-      //   id,
-      //   description,
-      //   category,
-      //   muscles,
-      //   action: "gymbud-exercise-preview",
-      //   nonce: gymbud.nonce,
-      // });
       document.getElementById("post-title").value = name;
-      document.getElementById("post-description").value = description;
+      document.getElementById("post-description").value =
+        generateDescriptionMarkup(description, category, muscles);
+    });
+
+    $(".post-preview-section").on("submit", (e) => {
+      e.preventDefault();
+      console.log(e);
+      $.post(ajaxurl, {
+        title: document.getElementById("post-title").value,
+        description: document.getElementById("post-description").value,
+        action: "gymbud-exercise-submit",
+        nonce: gymbud.nonce,
+      });
     });
   });
 })(jQuery);
