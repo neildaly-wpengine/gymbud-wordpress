@@ -15,7 +15,7 @@
         "<option value='none'>Select</option>");
     const generateDescriptionMarkup = (description, { name }, muscles) => {
       const muscleGroups = muscles
-        .map((muscle) => `<div class="musle-group">${muscle.name}</div>`)
+        .map((muscle) => `<div class="muscle-group">${muscle.name}</div>`)
         .join(" ");
       return `
         <div>

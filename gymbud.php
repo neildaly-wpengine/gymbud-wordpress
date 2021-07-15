@@ -20,5 +20,7 @@ if ( is_admin() ) {
 	include_once plugin_dir_path( __FILE__ ) . 'admin/admin-menu.php';
 	include_once plugin_dir_path( __FILE__ ) . 'admin/settings-page.php';
 	include_once plugin_dir_path( __FILE__ ) . 'admin/ajax-handlers.php';
-	include_once plugin_dir_path( __FILE__ ) . 'enqueue-scripts.php';
+	include_once plugin_dir_path( __FILE__ ) . 'admin/enqueue-scripts.php';
 }
+
+include_once plugin_dir_path( __FILE__ ) . 'enqueue-public-scripts.php';

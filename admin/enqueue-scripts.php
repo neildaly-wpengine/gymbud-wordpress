@@ -13,11 +13,11 @@ function load_gymbud_admin_styles( $hook ) {
 add_action( 'admin_enqueue_scripts', 'load_gymbud_admin_styles' );
 
 function gymbud_enqueue_styles() {
-	wp_enqueue_style( 'gymbud', plugin_dir_url( __FILE__ ) . 'admin/css/gymbud.css', array(), null, 'screen' );
+	wp_enqueue_style( 'gymbud', plugin_dir_url( __FILE__ ) . 'css/gymbud.css', array(), null, 'screen' );
 }
 
 function gymbud_enqueue_scripts() {
-	$script_url = plugin_dir_url( __FILE__  ) . 'admin/js/gymbud.js';
+	$script_url = plugin_dir_url( __FILE__ ) . 'js/gymbud.js';
 	$nonce      = wp_create_nonce( 'gymbud' );
 	wp_enqueue_script( 'gymbud', $script_url, array( 'jquery' ) );
 	wp_localize_script(

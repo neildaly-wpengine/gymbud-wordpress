@@ -5,14 +5,15 @@ function gymbud_exercise_submit() {
 	if ( ! current_user_can( 'publish_posts' ) ) {
 		return;
 	}
-	$title        = $_POST['title'];
+	$title       = $_POST['title'];
 	$description = $_POST['description'];
 
 	wp_insert_post(
 		array(
-			'post_content' => $description,
-			'post_title'   => $title,
-			'post_status'  => 'draft',
+			'post_content'  => $description,
+			'post_title'    => $title,
+			'post_status'   => 'publish',
+			'post_category' => array('6'),
 		)
 	);
 
