@@ -20,6 +20,13 @@
         (image) => `url(${image}),`
       )} url(${mainImage})"></div>`;
     };
+    const setLinkToPost = (link) => {
+      document.getElementById("view-post-link").href = link;
+    };
+    const showSuccessPanel = () =>
+      (document.getElementById("success-section").style.display = "block");
+    const hideSuccessPanel = () =>
+      (document.getElementById("success-section").style.display = "none");
 
     const createBackImageMarkup = (backImages) => {
       const mainImage =
@@ -65,13 +72,6 @@
         </div>
       `.trim();
     };
-    const setLinkToPost = (link) => {
-      document.getElementById("view-post-link").href = link;
-    };
-    const showSuccessPanel = () =>
-      (document.getElementById("success-section").style.display = "block");
-    const hideSuccessPanel = () =>
-      (document.getElementById("success-section").style.display = "none");
 
     const fetchCategories = async () => {
       const response = await fetch("https://wger.de/api/v2/exercisecategory/", {
@@ -118,6 +118,7 @@
       };
 
       hidePostPreviewSection();
+      hideSuccessPanel();
       if (e.target.value === "none") {
         hideExerciseSection();
         return;
