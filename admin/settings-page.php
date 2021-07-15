@@ -17,6 +17,7 @@ function gymbud_display_settings_page() {
 		<?php render_gymbud_category_selection(); ?>
 		<?php render_gymbud_exercise_selection(); ?>
 		<?php render_gymbud_post_preview(); ?>
+		<?php render_gymbud_success(); ?>
 	</div>
 	<?php
 }
@@ -58,5 +59,14 @@ function render_gymbud_post_preview() {
 		<textarea id="post-description" name="post-description" rows="4" cols="80"></textarea>
 		<input type="submit" class="post-preview-button" value="Publish"/>
 	</form>
+	<?php
+}
+
+function render_gymbud_success() {
+	?>
+	<div class="success-section" id="success-section">
+		<p id="success-message" class="success-message">Success! Your post has been created.</p>
+		<a id="view-post-link" class="view-post-link" href="" target="_blank">View Post</a>
+	</div>
 	<?php
 }

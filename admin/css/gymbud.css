@@ -41,3 +41,12 @@
   display: block;
   margin-bottom: 10px;
 }
+
+.success-message {
+  color: rgb(31, 146, 31);
+  display: none;
+}
+
+.view-post-link {
+  display: none;
+}

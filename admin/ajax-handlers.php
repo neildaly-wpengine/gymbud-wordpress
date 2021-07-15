@@ -20,7 +20,12 @@ function gymbud_exercise_submit() {
 	if ( is_wp_error( $post_id ) ) {
 		wp_send_json_error( array( 'result' => '0' ) );
 	} else {
-		wp_send_json_success( array( 'result' => '1' ) );
+		wp_send_json_success(
+			array(
+				'result' => '1',
+				'link'   => get_permalink( $post_id ),
+			)
+		);
 	}
 
 	wp_die();

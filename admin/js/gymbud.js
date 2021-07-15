@@ -29,6 +29,12 @@
         </div>
       `.trim();
     };
+    const showSuccessMessage = () =>
+      (document.getElementById("success-message").style.display = "block");
+    const showLinkToPost = (link) => {
+      document.getElementById("view-post-link").style.display = "block";
+      document.getElementById("view-post-link").href = link;
+    };
 
     const fetchCategories = async () => {
       const response = await fetch("https://wger.de/api/v2/exercisecategory/", {
@@ -124,7 +130,12 @@
           nonce: gymbud.nonce,
         },
         (data) => {
-          console.log(data);
+          if (!data.success) {
+            // todo
+            return;
+          }
+          showSuccessMessage();
+          showLinkToPost(data.data.link);
         }
       );
     });
