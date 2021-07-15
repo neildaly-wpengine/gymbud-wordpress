@@ -56,8 +56,8 @@ function render_gymbud_post_preview() {
 		<label for="post-title" class="post-title-label">Post Title</label>
 		<input type="text" id="post-title" name="post-title"/>
 		<label for="post-description" class="post-description-label">Description</label>
-		<textarea id="post-description" name="post-description" rows="4" cols="80"></textarea>
-		<input type="submit" class="post-preview-button" value="Publish"/>
+		<textarea id="post-description" name="post-description" rows="10" cols="80"></textarea>
+		<input type="submit" class="post-publish-button" value="Publish"/>
 	</form>
 	<?php
 }

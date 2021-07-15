@@ -1,5 +1,6 @@
 .category-section,
-.exercise-label {
+.exercise-section,
+.post-preview-section {
   margin: 15px 0;
 }
 
@@ -29,11 +30,24 @@
   display: none;
 }
 
-#post-title {
-  margin-bottom: 10px;
+.post-publish-button {
+  background: #5a46ca;
+  color: white;
+  border: 1px solid black;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-top: 20px;
+  margin-right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-#exercise-select {
+.post-publish-button:hover {
+  cursor: pointer;
+}
+
+#post-title {
   margin-bottom: 10px;
 }
 
@@ -47,9 +61,4 @@
 }
 .success-message {
   color: rgb(31, 146, 31);
-  /* display: none; */
-}
-
-.view-post-link {
-  /* display: none; */
 }
