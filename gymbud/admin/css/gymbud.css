@@ -1,0 +1,64 @@
+.category-section,
+.exercise-section,
+.post-preview-section {
+  margin: 15px 0;
+}
+
+.category-label,
+.exercise-label,
+.post-title-label,
+.post-description-label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+#category-select,
+#exercise-select,
+#post-title {
+  min-width: 18rem;
+}
+
+#post-description {
+  min-width: 25rem;
+}
+
+.exercise-section {
+  display: none;
+}
+
+.post-preview-section {
+  display: none;
+}
+
+.post-publish-button {
+  background: #5a46ca;
+  color: white;
+  border: 1px solid black;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-top: 20px;
+  margin-right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.post-publish-button:hover {
+  cursor: pointer;
+}
+
+#post-title {
+  margin-bottom: 10px;
+}
+
+#post-description {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.success-section {
+  display: none;
+}
+.success-message {
+  color: rgb(31, 146, 31);
+}
