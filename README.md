@@ -11,3 +11,11 @@ Quickly generate informative posts by selecting from a list of exercises obtaine
 Using Local, this repo can be directly placed into the plugins directory of the install.
 
 There is also a `gymbud` subdirectory, which can be zipped and placed on a staging install in the plugins directory.
+
+## Copy to Staging
+
+You will need your LDAP password along with the install(s) you wish to copy to.
+
+```bash
+./scripts/staging-setup.sh
+```
